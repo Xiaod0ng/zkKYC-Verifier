@@ -18,7 +18,7 @@ import QRCode from "react-qr-code";
 import { io } from "socket.io-client";
 
 const linkDownloadPolygonIDWalletApp =
-  "https://0xpolygonid.github.io/tutorials/wallet/wallet-overview/#quick-start";
+  "https://0xpolygonid.github.io/tutorials/wallet/wallet-sdk/polygonid-app/";
 
 function PolygonIDVerifier({
   credentialType,
@@ -33,7 +33,7 @@ function PolygonIDVerifier({
   const [isHandlingVerification, setIsHandlingVerification] = useState(false);
   const [verificationCheckComplete, setVerificationCheckComplete] =
     useState(false);
-  const [verificationMessage, setVerfificationMessage] = useState("");
+  const [verificationMessage, setVerificationMessage] = useState("");
   const [socketEvents, setSocketEvents] = useState([]);
 
   // serverUrl is localServerURL if not running in prod
@@ -82,13 +82,13 @@ function PolygonIDVerifier({
           setIsHandlingVerification(false);
           setVerificationCheckComplete(true);
           if (currentSocketEvent.status === "DONE") {
-            setVerfificationMessage("✅ Verified proof");
+            setVerificationMessage("✅ Verified proof");
             setTimeout(() => {
               reportVerificationResult(true);
             }, "2000");
             socket.close();
           } else {
-            setVerfificationMessage("❌ Error verifying VC");
+            setVerificationMessage("❌ Error verifying VC");
           }
         }
       }
@@ -109,7 +109,7 @@ function PolygonIDVerifier({
     <div>
       {sessionId ? (
         <Button colorScheme="purple" onClick={onOpen} margin={4}>
-          Prove access rights
+          Start KYC Process
         </Button>
       ) : (
         <Spinner />
@@ -128,7 +128,7 @@ function PolygonIDVerifier({
               >
                 Polygon ID Wallet App
               </a>{" "}
-              to prove access rights
+              to finish the KYC process
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody textAlign={"center"} fontSize={"12px"}>
@@ -159,23 +159,26 @@ function PolygonIDVerifier({
             </ModalBody>
 
             <ModalFooter>
-              <Button
-                fontSize={"10px"}
-                margin={1}
-                colorScheme="purple"
-                onClick={() => openInNewTab(linkDownloadPolygonIDWalletApp)}
-              >
-                Download the Polygon ID Wallet App{" "}
-                <ExternalLinkIcon marginLeft={2} />
-              </Button>
-              <Button
+              <Center>
+                <Button
+                  fontSize={"10px"}
+                  margin={1}
+                  colorScheme="purple"
+                  onClick={() => openInNewTab(linkDownloadPolygonIDWalletApp)}
+                >
+                  Download the Polygon ID Wallet App{" "}
+                  <ExternalLinkIcon marginLeft={2} />
+                </Button>
+              </Center>
+
+              {/* <Button
                 fontSize={"10px"}
                 margin={1}
                 colorScheme="purple"
                 onClick={() => openInNewTab(issuerOrHowToLink)}
               >
                 Get a {credentialType} VC <ExternalLinkIcon marginLeft={2} />
-              </Button>
+              </Button> */}
             </ModalFooter>
           </ModalContent>
         </Modal>
