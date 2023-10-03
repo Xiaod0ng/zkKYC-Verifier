@@ -11,6 +11,7 @@ import {
   useDisclosure,
   Spinner,
   Center,
+  Box,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import QRCode from "react-qr-code";
@@ -159,17 +160,17 @@ function PolygonIDVerifier({
             </ModalBody>
 
             <ModalFooter>
-              <Center>
+              <Box display="flex" justifyContent="center" width="100%">
                 <Button
                   fontSize={"10px"}
                   margin={1}
-                  colorScheme="purple"
+                  // colorScheme="purple"
                   onClick={() => openInNewTab(linkDownloadPolygonIDWalletApp)}
                 >
-                  Download the Polygon ID Wallet App{" "}
+                  Don't have Polygon ID Wallet App? Click to Download{" "}
                   <ExternalLinkIcon marginLeft={2} />
                 </Button>
-              </Center>
+              </Box>
 
               {/* <Button
                 fontSize={"10px"}
