@@ -1,11 +1,11 @@
 const { KYCAgeCredential } = require("./vcHelpers/KYCAgeCredential");
+const { zkKYCPassport } = require("./vcHelpers/zkKYCPassport");
 
-// design your own customised authentication requirement here using Query Language
-// https://0xpolygonid.github.io/tutorials/verifier/verification-library/zk-query-language/
+// https://devs.polygonid.com/docs/verifier/verification-library/zk-query-language/
 
 const humanReadableAuthReason = "Must be born before this year";
 
-const credentialSubject = {
+const credentialSubjectAge = {
   birthday: {
     // users must be born before this year
     // birthday is less than Jan 1, 2023
@@ -13,7 +13,12 @@ const credentialSubject = {
   },
 };
 
-const proofRequest = KYCAgeCredential(credentialSubject);
+const credentialSubject = {
+  Nationality: {},
+};
+
+// const proofRequest = KYCAgeCredential(credentialSubjectAge);
+const proofRequest = zkKYCPassport(credentialSubject);
 
 module.exports = {
   humanReadableAuthReason,

@@ -5,8 +5,7 @@ import VcGatedDapp from "./VcGatedDapp";
 import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
 
 function App() {
-  // if you're developing and just want to see the dapp without going through the Polygon ID flow,
-  // temporarily set this to "true" to ignore the Polygon ID check and go straight to the dapp page
+  // Set to "true" to bypass the Polygon ID check process
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
   return (
     <>

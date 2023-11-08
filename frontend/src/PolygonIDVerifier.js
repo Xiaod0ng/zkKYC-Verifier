@@ -88,6 +88,7 @@ function PolygonIDVerifier({
               reportVerificationResult(true);
             }, "2000");
             socket.close();
+            console.log("socket closed");
           } else {
             setVerificationMessage("❌ Error verifying VC");
           }
