@@ -6,7 +6,7 @@ module.exports = {
       allowedIssuers: ["*"],
       type: "ZKKYC",
       context:
-        "https://raw.githubusercontent.com/Xiaod0ng/Schema/main/zkKYCPassport.json-ld",
+        "https://raw.githubusercontent.com/Xiaod0ng/Schema/main/json-ld/zkKYCPassport.json-ld",
       credentialSubject,
     },
   }),

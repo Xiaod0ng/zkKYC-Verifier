@@ -14,7 +14,9 @@ const credentialSubjectAge = {
 };
 
 const credentialSubject = {
-  Nationality: {},
+  DateOfBirth: {
+    $lt: 20230101,
+  },
 };
 
 // const proofRequest = KYCAgeCredential(credentialSubjectAge);
