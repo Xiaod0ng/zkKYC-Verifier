@@ -2,7 +2,14 @@ import "./App.css";
 import { useState } from "react";
 import PolygonIDVerifier from "./PolygonIDVerifier";
 import DummyBank from "./DummyBank";
-import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
+import {
+  Center,
+  Card,
+  Image,
+  CardBody,
+  Container,
+  Text,
+} from "@chakra-ui/react";
 
 function App() {
   // Set to "true" to bypass the Polygon ID check process
@@ -20,7 +27,9 @@ function App() {
               }}
             >
               <CardBody style={{ paddingBottom: 0 }}>
-                <p>Finish KYC process to use the platform.</p>
+                <Text fontSize="xl" fontWeight="semibold">
+                  Finish KYC process to use the platform
+                </Text>
 
                 <PolygonIDVerifier
                   publicServerURL={
@@ -40,7 +49,7 @@ function App() {
                     position: "absolute",
                     bottom: "-15px",
                     right: "0",
-                    fontSize: "8px",
+                    fontSize: "10px",
                   }}
                 >
                   Created by XD

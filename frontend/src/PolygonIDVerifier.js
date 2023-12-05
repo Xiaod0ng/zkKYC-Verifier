@@ -121,15 +121,8 @@ function PolygonIDVerifier({
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>
-              Scan this QR code from your{" "}
-              <a
-                href={linkDownloadPolygonIDWalletApp}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Polygon ID Wallet App
-              </a>{" "}
-              to finish the KYC process
+              Scan this QR code from your Polygon ID Wallet App to finish the
+              KYC process
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody textAlign={"center"} fontSize={"12px"}>
