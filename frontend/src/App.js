@@ -1,16 +1,16 @@
 import "./App.css";
 import { useState } from "react";
 import PolygonIDVerifier from "./PolygonIDVerifier";
-import VcGatedDapp from "./VcGatedDapp";
+import DummyBank from "./DummyBank";
 import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
 
 function App() {
   // Set to "true" to bypass the Polygon ID check process
-  const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
+  const [provedAccess, setProvedAccess] = useState(false);
   return (
     <>
-      {provedAccessBirthday ? (
-        <VcGatedDapp />
+      {provedAccess ? (
+        <DummyBank />
       ) : (
         <Center className="vc-check-page">
           <Container>
@@ -29,11 +29,8 @@ function App() {
                   localServerURL={
                     process.env.REACT_APP_VERIFICATION_SERVER_LOCAL_HOST_URL
                   }
-                  credentialType={"KYCAgeCredential"}
-                  issuerOrHowToLink={
-                    "https://oceans404.notion.site/How-to-get-a-Verifiable-Credential-f3d34e7c98ec4147b6b2fae79066c4f6?pvs=4"
-                  }
-                  onVerificationResult={setProvedAccessBirthday}
+                  credentialType={process.env.CREDENTIAL_TYPE}
+                  onVerificationResult={setProvedAccess}
                 />
                 <Image src="" alt="" borderRadius="lg" />
               </CardBody>

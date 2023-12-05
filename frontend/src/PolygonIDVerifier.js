@@ -23,7 +23,6 @@ const linkDownloadPolygonIDWalletApp =
 
 function PolygonIDVerifier({
   credentialType,
-  issuerOrHowToLink,
   onVerificationResult,
   publicServerURL,
   localServerURL,
@@ -160,7 +159,7 @@ function PolygonIDVerifier({
               )}
             </ModalBody>
 
-            <ModalFooter>
+            {/* <ModalFooter>
               <Box display="flex" justifyContent="center" width="100%">
                 <Button
                   fontSize={"10px"}
@@ -172,16 +171,7 @@ function PolygonIDVerifier({
                   <ExternalLinkIcon marginLeft={2} />
                 </Button>
               </Box>
-
-              {/* <Button
-                fontSize={"10px"}
-                margin={1}
-                colorScheme="purple"
-                onClick={() => openInNewTab(issuerOrHowToLink)}
-              >
-                Get a {credentialType} VC <ExternalLinkIcon marginLeft={2} />
-              </Button> */}
-            </ModalFooter>
+            </ModalFooter> */}
           </ModalContent>
         </Modal>
       )}

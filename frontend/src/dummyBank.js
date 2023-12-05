@@ -1,153 +1,84 @@
-import { useState, useEffect } from "react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { createPublicClient, http } from "viem";
-import { polygonZkEvmTestnet } from "viem/chains";
 import {
   Box,
   Container,
   Flex,
   Heading,
   Button,
-  Spinner,
   Card,
   Center,
   VStack,
+  ButtonGroup,
+  Grid,
+  GridItem,
+  Text,
 } from "@chakra-ui/react";
-import {
-  getAccount,
-  readContract,
-  writeContract,
-  waitForTransaction,
-} from "@wagmi/core";
-import demoAbi from "./demoSmartContract/demoAbi.json";
 
-function dummyBank() {
-  const chain = polygonZkEvmTestnet;
-  const chainId = polygonZkEvmTestnet.id;
-
-  const [publicClient, setPublicClient] = useState();
-  const [connectedAddress, setConnectedAddress] = useState();
-  const [addressIsConnected, setAddressIsConnected] = useState(false);
-  const [currentBlockNumber, setCurrentBlockNumber] = useState();
-  const [showConnectionInfo, setShowConnectionInfo] = useState(false);
-
-  // variables specific to demo
-  const myZkEVMSmartContractAddress =
-    "0x3Baf2aa2aD287949590cD39a731fD17606c7D10F";
-
-  const contractConfig = {
-    address: myZkEVMSmartContractAddress,
-    abi: demoAbi,
-    chainId,
-  };
-
-  const [count, setCount] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-
+function DummyBank() {
   return (
-    <div id="vc-gated-dapp">
+    <div id="dummyBank">
       <Box background="black" color="white" py={4}>
         <Container maxW={"80%"}>
           <Flex justifyContent="space-between">
-            <Heading>My VC Gated Dapp</Heading>
-            <ConnectButton showBalance={false} />
+            <Heading>XD Bank</Heading>
+            <ButtonGroup>
+              <Button colorScheme="purple">Login</Button>
+              <Button colorScheme="whiteAlpha">Register</Button>
+            </ButtonGroup>
           </Flex>
+        </Container>
+      </Box>
+
+      <Box py={4}>
+        <Container maxW={"80%"}>
+          <Grid
+            templateColumns="repeat(5, 1fr)"
+            gap={1}
+            fontWeight={"bold"}
+            fontSize={"xl"}
+          >
+            <GridItem>
+              <Center>Banking</Center>
+            </GridItem>
+            <GridItem>
+              <Center>Investments</Center>
+            </GridItem>
+            <GridItem>
+              <Center>Cards</Center>
+            </GridItem>
+            <GridItem>
+              <Center>Loans</Center>
+            </GridItem>
+            <GridItem>
+              <Center>Insurance</Center>
+            </GridItem>
+          </Grid>
         </Container>
       </Box>
 
       <Box>
         <Container maxW={"80%"} py={4}>
-          <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
-            {showConnectionInfo ? "Hide" : "Show"} connection information
-          </Button>
-          {showConnectionInfo && (
-            <Box py={4}>
-              {addressIsConnected ? (
-                <p>Address {connectedAddress} is connected to this dapp</p>
-              ) : (
-                <p>
-                  No account connected. Connect wallet to interact with dapp
-                </p>
-              )}
-
-              {publicClient ? (
-                <ul>
-                  <li>
-                    Currently using a{" "}
-                    <a
-                      href="https://viem.sh/docs/clients/public.html"
-                      target="_blank"
-                    >
-                      public client
-                    </a>{" "}
-                    with Chain: {publicClient?.chain?.name} and Chain ID:{" "}
-                    {publicClient?.chain?.id}
-                  </li>
-
-                  <li>
-                    The current block number is {currentBlockNumber?.toString()}
-                  </li>
-                </ul>
-              ) : (
-                <>
-                  Please install{" "}
-                  <a href="https://metamask.io/" target="_blank">
-                    Metamask
-                  </a>
-                </>
-              )}
-            </Box>
-          )}
           <div>
             <Card my={4} p={4}>
               <Center>
-                <VStack>
-                  <Heading>Counter Dapp</Heading>
-
-                  <p>The current count is</p>
-                  <Heading>{isLoading ? <Spinner></Spinner> : count}</Heading>
-                  <Button onClick={() => incrementCounter()}>
-                    Increment counter
-                  </Button>
-                </VStack>
+                <Heading>Welcome to XD Bank</Heading>
               </Center>
             </Card>
-            <ul>
-              <li>
-                Check out the Counter{" "}
-                <a
-                  href={`https://testnet-zkevm.polygonscan.com/address/${myZkEVMSmartContractAddress}`}
-                  target="_blank"
-                >
-                  contract on Polygonscan
-                </a>{" "}
-                and the{" "}
-                <a
-                  href="https://github.com/oceans404/fullstack-zkevm/blob/complete/contracts/Counter.sol"
-                  target="_blank"
-                >
-                  {" "}
-                  contract code on Github
-                </a>
-              </li>
-              <li>
-                You need Polygon zkEVM Testnet ETH to update the counter value.{" "}
-                <a
-                  href="https://www.youtube.com/watch?v=eYZAPkTCgwg"
-                  target="_blank"
-                >
-                  Here's how to Get Polygon zkEVM Testnet ETH
-                </a>{" "}
-                Use the{" "}
-                <a
-                  href="https://wallet.polygon.technology/?redirectOnConnect=%2FzkEVM-Bridge%2Fbridge"
-                  target="_blank"
-                >
-                  Native Bridge
-                </a>{" "}
-                to bridge Ethereum Goerli ETH to Polygon zkEVM testnet ETH
-              </li>
-            </ul>
+            <Card my={4} p={4}>
+              <Text fontWeight="bold" fontSize="xl">
+                Be careful of malware scams.
+              </Text>
+              <p>
+                Stay alert of special offers on social media or via messages and
+                avoid opening links or downloading apps from these sources.
+                Please don’t enter your account details, passwords or personal
+                info into such fake links or apps as fraudsters may take control
+                of your phone. For security reasons, we have temporarily
+                disabled screen capture and recording functions on Android
+                devices until further notice. Please use the Save Image button
+                in the app's Transfer & Pay function or capture screen on SMS or
+                email we send you to save transaction records.
+              </p>
+            </Card>
           </div>
         </Container>
       </Box>
@@ -155,4 +86,4 @@ function dummyBank() {
   );
 }
 
-export default dummyBank;
+export default DummyBank;
