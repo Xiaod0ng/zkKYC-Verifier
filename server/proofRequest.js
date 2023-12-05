@@ -26,8 +26,8 @@ const humanReadableAuthReason = process.env.AUTH_REASON;
 
 //------------------------------------------------------------
 const credentialSubject = {
-  birthday: {
-    $lt: 20231201,
+  Sex: {
+    $eq: "Female",
   },
 };
 

@@ -6,7 +6,7 @@ module.exports = {
       allowedIssuers: ["*"],
       type: "KYC",
       context:
-        "https://raw.githubusercontent.com/Xiaod0ng/Schema/main/json-ld/test-Age.json-ld",
+        "https://raw.githubusercontent.com/Xiaod0ng/Schema/main/json-ld/ZKKYCID.json-ld",
       credentialSubject,
     },
   }),
