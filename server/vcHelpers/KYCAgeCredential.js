@@ -7,7 +7,11 @@ module.exports = {
       type: "KYCAgeCredential",
       context:
         "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld",
-      credentialSubject,
+      credentialSubject: {
+        birthday: {
+          $lt: 20231201,
+        },
+      },
     },
   }),
 };

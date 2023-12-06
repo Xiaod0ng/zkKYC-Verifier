@@ -19,12 +19,6 @@ const { chains, publicClient } = configureChains(
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
-// const { connectors } = getDefaultWallets({
-//   appName: "My Polygon ID VC Gated dapp",
-//   projectId: process.env.REACT_APP_WALLET_CONNECT_ID,
-//   chains,
-// });
-
 const wagmiConfig = createConfig({
   autoConnect: true,
   // connectors,

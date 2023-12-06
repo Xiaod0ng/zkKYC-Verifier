@@ -6,32 +6,11 @@ require("dotenv").config();
 
 const humanReadableAuthReason = process.env.AUTH_REASON;
 
-// const credentialSubject = {
-//   birthday: {
-//     $lt: 20231201,
-//   },
-// };
-
 // const proofRequest = KYCAgeCredential(credentialSubject);
-
-//------------------------------------------------------------
-
-// const credentialSubject = {
-//   Sex: {
-//     $eq: "Female",
-//   },
-// };
 
 // const proofRequest = zkKYCPassport(credentialSubject);
 
-//------------------------------------------------------------
-const credentialSubject = {
-  Sex: {
-    $eq: "Female",
-  },
-};
-
-const proofRequest = KYC(credentialSubject);
+const proofRequest = KYC();
 
 module.exports = {
   humanReadableAuthReason,
