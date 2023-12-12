@@ -3,7 +3,11 @@ const { auth, resolver, loaders } = require("@iden3/js-iden3-auth");
 const getRawBody = require("raw-body");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
+const {
+  humanReadableAuthReason,
+  proofRequest1,
+  proofRequest2,
+} = require("./proofRequest");
 
 require("dotenv").config();
 
@@ -86,7 +90,7 @@ async function getAuthQr(req, res) {
   request.thid = sessionId;
 
   const scope = request.body.scope ?? [];
-  request.body.scope = [...scope, proofRequest];
+  request.body.scope = [...scope, proofRequest1, proofRequest2];
 
   // store this session's auth request
   authRequests.set(sessionId, request);
